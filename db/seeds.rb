@@ -5,24 +5,47 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require 'faker'
 
-puts "🌱 Seeding spices..."
+
 # restaurants.rb
 
-Restaurant.create(name: "Sottocasa NYC", address: "298 Atlantic Ave, Brooklyn, NY 11201")
-Restaurant.create(name: "PizzArte", address: "69 W 55th St, New York, NY 10019")
+puts "🌱 Seeding restaurants..."
+
+# Create 10 restaurants
+10.times do
+  Restaurant.create(
+    name: Faker::Restaurant.name,
+    address: Faker::Address.full_address
+  )
+end
 
 
 # pizzas.rb
 
-Pizza.create(name: "Cheese", ingredients: "Dough, Tomato Sauce, Cheese")
-Pizza.create(name: "Pepperoni", ingredients: "Dough, Tomato Sauce, Cheese, Pepperoni")
+puts "🌱 Seeding pizzas..."
+
+# Create 20 pizzas
+20.times do
+  Pizza.create(
+    name: Faker::Food.dish,
+    ingredients: Faker::Food.ingredient
+  )
+end
 
 
 # restaurant_pizzas.rb
 
-RestaurantPizza.create(price: 10.0, restaurant_id: 1, pizza_id: 1)
-RestaurantPizza.create(price: 15.0, restaurant_id: 1, pizza_id: 2)
-RestaurantPizza.create(price: 12.0, restaurant_id: 2, pizza_id: 1)
+puts "🌱 Seeding restaurant_pizzas..."
+# Assign random pizzas to random restaurants with random prices
+Restaurant.all.each do |restaurant|
+  Pizza.all.each do |pizza|
+    RestaurantPizza.create(
+      price: rand(5.0..20.0),
+      restaurant_id: restaurant.id,
+      pizza_id: pizza.id
+    )
+  end
+end
 
-puts "done"
+puts "✅ Done seeding!"
