@@ -4,23 +4,23 @@ class PizzasController < ApplicationController
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
   def index
-      render json: Pizza.all
+      render json: Pizza.all.as_json(except: [:created_at, :updated_at])
   end
 
   def show
       pizza = find_pizza
-      render json: pizza, status: :ok
+      render json: pizza.as_json(except: [:created_at, :updated_at]), status: :ok
   end
 
   def create
       pizza = Pizza.create!(pizza_params)
-      render json: pizza, status: :created
+      render json: pizza.as_json(except: [:created_at, :updated_at]), status: :created
   end
 
   def update
       pizza = find_pizza
       pizza.update!(pizza_params)
-      render json: pizza, status: :ok
+      render json: pizza.as_json(except: [:created_at, :updated_at]), status: :ok
   end
 
   def destroy
