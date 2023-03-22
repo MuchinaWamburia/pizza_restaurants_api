@@ -30,6 +30,11 @@ The API should now be up and running on http://localhost:3000.
 - A RestaurantPizza belongs to a Restaurant and also belongs to a Pizza
 
 ## Endpoints
+### VIDEO
+1. https://youtu.be/No3AnLAcSYA
+2. https://youtu.be/8kW-5nyIYmY
+3. https://youtu.be/Lk33P1sTCc0
+***
 Restaurants
 - GET /restaurants
 
@@ -91,5 +96,5 @@ The API is available as open source under the terms of the MIT License
 Copyright (c) 2023 MuchinaWamburia
 ***
 # AUTHOR INFO
-* EMAIL: (lucymuchina20@gmail.com)
+* EMAIL: lucymuchina20@gmail.com
 * PhoneNo: +254798038006
